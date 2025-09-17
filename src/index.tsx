@@ -55,17 +55,17 @@ function init(context: types.IExtensionContext) {
     isDefaultVisible: false,
   });
   context.registerAction('mods-multirow-actions', 300, HighlightIconBar, {}, undefined,
-    instanceIds => {
-      const state = context.api.store.getState();
-      const profile = selectors.activeProfile(state);
-      if (profile !== undefined) {
-        const mods = util.getSafe(state, ['persistent', 'mods', profile.gameId], {});
-        const selectedMods = Object.keys(mods)
-          .filter(key => instanceIds.includes(key) && mods[key].state === 'installed');
-        context.api.store.dispatch(setSelectedMods(selectedMods));
-      }
-      return true;
-    });
+                         instanceIds => {
+                           const state = context.api.store.getState();
+                           const profile = selectors.activeProfile(state);
+                           if (profile !== undefined) {
+                             const mods = util.getSafe(state, ['persistent', 'mods', profile.gameId], {});
+                             const selectedMods = Object.keys(mods)
+                               .filter(key => instanceIds.includes(key) && mods[key].state === 'installed');
+                             context.api.store.dispatch(setSelectedMods(selectedMods));
+                           }
+                           return true;
+                         });
 
   context.once(() => {
     context.api.setStylesheet('mod-highlight', path.join(__dirname, 'mod-highlight.scss'));

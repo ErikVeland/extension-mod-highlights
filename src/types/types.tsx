@@ -36,24 +36,24 @@ export class HighlightBase<P, S extends object> extends ComponentEx<P, S> {
     const { t } = this.props;
     const { toggleColors, toggleIcons } = popProps;
     return <Popover
-        id='popover-highlight-settings'
-        title={t('Highlight Settings')}
-      >
-        <FormGroup key={'some-form'}>
-          <ControlLabel>{t('Select theme')}
-          </ControlLabel>
-          <div key='dialog-form-colors'>
-            {cssHighlightList.map((highlightColor) => {
-              return this.renderHighlightColor(highlightColor, toggleColors);
-            })}
-          </div>
-          <ControlLabel>{t('Select mod icon')}
-          </ControlLabel>
-          <div className='highlight-icons'>
-            {modIcons.map(icon => this.renderIcons(icon, toggleIcons))}
-          </div>
-        </FormGroup>
-      </Popover>
+      id='popover-highlight-settings'
+      title={t('Highlight Settings')}
+    >
+      <FormGroup key={'some-form'}>
+        <ControlLabel>{t('Select theme')}
+        </ControlLabel>
+        <div key='dialog-form-colors'>
+          {cssHighlightList.map((highlightColor) => {
+            return this.renderHighlightColor(highlightColor, toggleColors);
+          })}
+        </div>
+        <ControlLabel>{t('Select mod icon')}
+        </ControlLabel>
+        <div className='highlight-icons'>
+          {modIcons.map(icon => this.renderIcons(icon, toggleIcons))}
+        </div>
+      </FormGroup>
+    </Popover>
   }
 
   protected renderIcons(icon: string, onClick: (evt: any) => void): JSX.Element {
